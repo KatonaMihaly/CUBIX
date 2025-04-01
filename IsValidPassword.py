@@ -1,4 +1,7 @@
 # RULESET ----------------------------------------------
+import re
+
+
 def is_valid_length(s):
     return True if len(s) >= 6 else False
 
@@ -13,6 +16,9 @@ def is_valid_numeric(s):
 
 def is_valid_special(s):
     return any(not char.isalnum() for char in s)
+
+def is_valid_sum(s):
+    return sum([int(char) for char in s if char.isdigit()]) == 25
 
 # def is_valid_rule(s):
 #     return True
@@ -30,16 +36,11 @@ while True:
         print("Must contain at least one number.")
     elif not is_valid_special(input_str):
         print("Must contain at least one special character.")
-
+    elif not is_valid_sum(input_str):
+        print("The digits in the password must add up to 25.")
     # elif not is_valid_rule(input_str):
     #     print("Must contain ...")
 
     else:
         print("You win!")
         break
-
-
-
-
-
-

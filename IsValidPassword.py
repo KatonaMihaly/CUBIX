@@ -20,6 +20,11 @@ def is_valid_special(s):
 def is_valid_sum(s):
     return sum([int(char) for char in s if char.isdigit()]) == 25
 
+def is_valid_month(s):
+    months = ["january", "february", "march", "april", "may", "june", "july", "august", "september", "october",
+              "november", "december"]
+    return any(month in s.lower() for month in months)
+
 # def is_valid_rule(s):
 #     return True
 
@@ -38,6 +43,8 @@ while True:
         print("Must contain at least one special character.")
     elif not is_valid_sum(input_str):
         print("The digits in the password must add up to 25.")
+    elif not is_valid_month(input_str):
+        print("Must contain at least one month.")
     # elif not is_valid_rule(input_str):
     #     print("Must contain ...")
 

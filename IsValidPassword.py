@@ -1,3 +1,4 @@
+# RULESET ----------------------------------------------
 def is_valid_length(s):
     return True if len(s) >= 6 else False
 
@@ -16,6 +17,7 @@ def is_valid_special(s):
 # def is_valid_rule(s):
 #     return True
 
+# MAIN --------------------------------------------------
 while True:
     input_str = input("Enter a password:")
     if not is_valid_length(input_str):
@@ -28,8 +30,10 @@ while True:
         print("Must contain at least one number.")
     elif not is_valid_special(input_str):
         print("Must contain at least one special character.")
+
     # elif not is_valid_rule(input_str):
     #     print("Must contain ...")
+
     else:
         print("You win!")
         break

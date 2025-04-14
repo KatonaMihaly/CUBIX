@@ -1,6 +1,11 @@
 # RULESET ----------------------------------------------
 import numpy as np
+import os
 
+def interactive_input():
+    input_str = input("Enter your password: ")
+    print(f"Received input: {input_str}")
+    return input_str
 
 def is_valid_length(s):
     return True if len(s) >= 6 else False
@@ -33,7 +38,12 @@ def is_valid_root(s):
 
 # MAIN --------------------------------------------------
 while True:
-    input_str = input("Enter a password:")
+
+    if os.getenv('TEAMCITY_VERSION') is None:
+        input_str = interactive_input()
+    else:
+        input_str = os.getenv('USER_INPUT')
+
     if not is_valid_length(input_str):
         print("Must be at least 6 characters long.")
     elif not is_valid_lowercase(input_str):

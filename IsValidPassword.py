@@ -1,5 +1,5 @@
 # RULESET ----------------------------------------------
-import re
+import numpy as np
 
 
 def is_valid_length(s):
@@ -25,6 +25,9 @@ def is_valid_month(s):
               "november", "december"]
     return any(month in s.lower() for month in months)
 
+def is_valid_root(s):
+    return any(np.sqrt(int(char)) > 2 for char in s if char.isdigit())
+
 # def is_valid_rule(s):
 #     return True
 
@@ -45,6 +48,8 @@ while True:
         print("The digits in the password must add up to 25.")
     elif not is_valid_month(input_str):
         print("Must contain at least one month.")
+    elif not is_valid_root(input_str):
+        print("Must contain a number which root is more than 2.")
     # elif not is_valid_rule(input_str):
     #     print("Must contain ...")
 

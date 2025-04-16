@@ -25,6 +25,15 @@ def is_valid_month(s):
               "november", "december"]
     return any(month in s.lower() for month in months)
 
+import re
+
+def is_valid_romannumber(s):
+    # Római szám karakterek (nagybetűs)
+    roman_numerals = "IVXLCDM"
+    
+    # Ellenőrzi, hogy a szöveg tartalmaz-e bármelyik római szám karaktert
+    return any(roman in s for roman in roman_numerals)
+
 # def is_valid_rule(s):
 #     return True
 
@@ -45,9 +54,11 @@ while True:
         print("The digits in the password must add up to 25.")
     elif not is_valid_month(input_str):
         print("Must contain at least one month.")
-    # elif not is_valid_rule(input_str):
-    #     print("Must contain ...")
+    elif not is_valid_romannumber(input_str):
+        print("Must contain at least one valid Roman numeral.")
 
+#   elif not is_valid_rule(input_str):
+#       print("Must contain ...")
     else:
         print("You win!")
         break

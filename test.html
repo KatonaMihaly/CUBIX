@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <input id="nameInput" placeholder="Add meg a neved">
+    <button onclick="greetUser()">Küldés</button>
+    <p id="greetingMessage"></p>
+    <script>
+      function greetUser() {
+        const name = document.getElementById('nameInput').value;
+        const messageElement = document.getElementById('greetingMessage');
+
+        const validNameRegex = /^[a-zA-ZáéíóöőúüűÁÉÍÓÖŐÚÜŰ\s\-]+$/;
+
+        if (name === "") {
+          messageElement.textContent = "Kérlek, add meg a neved!";
+        } else if (!validNameRegex.test(name)) {
+          messageElement.textContent = "A név csak betűket tartalmazhat!";
+        } else {
+          messageElement.textContent = `Szia, ${name}!`;
+        }
+      }
+    </script>
+  </body>
+</html>

@@ -125,37 +125,39 @@ def is_valid_root(s):
 #     """
 #     return True
 
+def validate_password(input_str):
+    if not is_valid_length(input_str):
+        return "Must be at least 6 characters long. Try again."
+    elif not is_valid_lowercase(input_str):
+        return "Must contain at least one lowercase letter. Try again."
+    elif not is_valid_uppercase(input_str):
+        return "Must contain at least one uppercase letter. Try again."
+    elif not is_valid_numeric(input_str):
+        return "Must contain at least one number. Try again."
+    elif not is_valid_special(input_str):
+        return "Must contain at least one special character. Try again."
+    elif not is_valid_sum(input_str):
+        return "The digits in the password must add up to 25. Try again."
+    elif not is_valid_month(input_str):
+        return "Must contain at least one month. Try again."
+    elif not is_valid_root(input_str):
+        return "Must contain a number which root is more than 2. Try again."
+    # elif not is_valid_rule(input_str):
+    #     return "Must contain ...")
+    else:
+        return None
+
 def main():
     """
     Main function to interactively prompt the user for a password and validate it
     against a set of predefined rules. Prints feedback for each failed rule.
     """
-    while True:
-        # Determine input source based on environment
-        if os.getenv('TEAMCITY_VERSION') is None:
-            input_str = interactive_input()
-        else:
-            input_str = os.getenv('USER_INPUT')
 
-        # Sequentially check each rule and provide feedback
-        if not is_valid_length(input_str):
-            print("Must be at least 6 characters long.")
-        elif not is_valid_lowercase(input_str):
-            print("Must contain at least one lowercase letter.")
-        elif not is_valid_uppercase(input_str):
-            print("Must contain at least one uppercase letter.")
-        elif not is_valid_numeric(input_str):
-            print("Must contain at least one number.")
-        elif not is_valid_special(input_str):
-            print("Must contain at least one special character.")
-        elif not is_valid_sum(input_str):
-            print("The digits in the password must add up to 25.")
-        elif not is_valid_month(input_str):
-            print("Must contain at least one month.")
-        elif not is_valid_root(input_str):
-            print("Must contain a number which root is more than 2.")
-        # elif not is_valid_rule(input_str):
-        #     print("Must contain ...")
+    while True:
+        input_str = input("Enter your password: ")
+        error = validate_password(input_str)
+        if error:
+            print(error)
         else:
             print("You win!")
             break

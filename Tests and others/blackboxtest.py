@@ -1,4 +1,4 @@
-from IsValidPassword.isvalidpassword import IsValidPassword
+from IsValidPassword import IsValidPassword
 
 test_cases = {
     "abc": False,

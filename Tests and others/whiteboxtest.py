@@ -1,5 +1,5 @@
 import unittest
-from IsValidPassword import is_valid_length
+from IsValidPassword.isvalidpassword.IsValidPassword import is_valid_length
 
 class TestIsValidLength(unittest.TestCase):
     def test_too_short(self):

@@ -112,6 +112,20 @@ def is_valid_root(s):
     """
     return any(np.sqrt(int(char)) > 2 for char in s if char.isdigit())
 
+def is_valid_char(s):
+    """
+        Check if the input string contains %.
+
+        Parameters:
+            s (str): The string to be checked.
+
+        Returns:
+            bool: True if contains %, False otherwise.
+        """
+
+    return '%' in s
+
+
 # def is_valid_rule(s):
 #     """
 #     Placeholder for additional rule validation.
@@ -141,6 +155,8 @@ def validate_password(input_str):
         return "Must contain at least one month. Try again."
     elif not is_valid_root(input_str):
         return "Must contain a number which root is more than 2. Try again."
+    elif not is_valid_char(input_str):
+        return "Must contain %. Try again."
     # elif not is_valid_rule(input_str):
     #     return "Must contain ...")
     else:
